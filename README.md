@@ -1,5 +1,11 @@
 # packer-course-bootstrap
 
+## Prérequis
+Installer toutes les dépendance de virtualisation.
+```bash
+dnf install '@Virtualization Host'
+```
+
 ## Kickstart 
 
 #### Générer le mot de passe de root
@@ -11,7 +17,6 @@ La suite de caractére obtenu est a spécifier de la maniére suivante :
 ```ks
 rootpw --iscrypted <password>
 ```
-
 
 ## Debug
 
