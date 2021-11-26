@@ -5,4 +5,19 @@
     - name: Install package GIT
       package:
         name: git
-        state: latest 
+        state: latest
+
+    - name: Install package golang-myip
+      package:
+	name: golang-myip
+        state: latest
+
+    - name: Enable service golang-myip
+      ansible.builtin.service:
+        name: golang-myip
+        enabled: yes
+
+    - name: Start service golang-myip, if not started
+      ansible.builtin.service:
+        name: golang-myip
+        state: started
