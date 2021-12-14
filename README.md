@@ -13,7 +13,7 @@ git clone git@github.com:Kev1venteur/TP-Packer.git && cd TP-Packer
 # Lancer le build packer 
 packer build rocky-8.pkr.hcl
 
-# Le mot de passe de le vm crééear packer est %Serveur44
+# Le mot de passe de le vm créée par packer est %Serveur44
 ``` 
 
 ## Debug
