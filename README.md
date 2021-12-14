@@ -1,22 +1,18 @@
-# packer-course-bootstrap
-
 ## Prérequis
 Installer toutes les dépendance de virtualisation.
 ```bash
 dnf install '@Virtualization Host'
 ```
 
-## Kickstart 
+## Kickstart
 
-#### Générer le mot de passe de root
+```BASH
+# Cloner le repo
+git clone git@github.com:Kev1venteur/TP-Packer.git && cd TP-Packer
 
-```bash
-openssl passwd -6
-```
-La suite de caractére obtenu est a spécifier de la maniére suivante :
-```ks
-rootpw --iscrypted <password>
-```
+# Lancer le build packer 
+packer build rocky-8.pkr.hcl
+``` 
 
 ## Debug
 
@@ -26,10 +22,4 @@ Avant de lancer Packer définissez la variable d'environnement 'PACKER_LOG'.
 
 ```bash
 export PACKER_LOG=1
-```
-#### Augmenter le niveau de log d'Ansible
-Dans votre fichier PAcker, ajouter la configuration suivante au provisionner d'Ansible.
-
-```hcl
-    extra_arguments = [ "-vv" ]
 ```
