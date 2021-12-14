@@ -1,5 +1,5 @@
 ## Prérequis
-Installer toutes les dépendance de virtualisation.
+Installer toutes les dépendanes de virtualisation.
 ```bash
 dnf install '@Virtualization Host'
 ```
