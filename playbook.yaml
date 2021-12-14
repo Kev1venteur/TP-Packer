@@ -7,17 +7,75 @@
         name: git
         state: latest
 
-    - name: Install package golang-myip
+    - name: Install package GO
       package:
-	name: golang-myip
+        name: go
         state: latest
 
-    - name: Enable service golang-myip
+    - name: Install package MAKE
+      package:
+        name: make
+        state: latest
+
+    - name: Enable SSH at startup by enabling the sshd service
       ansible.builtin.service:
-        name: golang-myip
+        name: sshd.service
         enabled: yes
 
-    - name: Start service golang-myip, if not started
+    - name: Create Golang service in systemd
+      ansible.builtin.template:
+        src: template/golang.service
+        dest: /etc/systemd/system/golang.service
+
+    - name: Restart systemd daemon to add our new Golang service
+      ansible.builtin.systemd:
+        daemon_reload: yes
+
+    - name: Start Golang service
       ansible.builtin.service:
-        name: golang-myip
+        name: golang.service
         state: started
+
+    - name: Enable Golang service at startup
+      ansible.builtin.service:
+        name: golang.service
+        enabled: yes
+
+    - name: Create temporary directory for golang-myip
+      ansible.builtin.file:
+        path: /tmp/golang-myip
+        state: directory
+        mode: '0755'
+
+    - name: Get goland-myip from git distant repository
+      ansible.builtin.git:
+        repo: https://github.com/BastienBalaud/golang-myip.git
+        dest: /tmp/golang-myip/
+        clone: yes
+        update: yes
+
+    - name: Build golang-myip target with a custom Makefile
+      make:
+        chdir: /tmp/golang-myip
+        target: all
+        file: /tmp/golang-myip/Makefile
+
+    - name: Open port 80 in firewalld
+      ansible.posix.firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Add the user 'bastien' with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+      ansible.builtin.user:
+        name: bastien
+        shell: /bin/bash
+        groups: users,wheel
+        append: yes
+
+    - name: Set authorized key took from url
+      authorized_key:
+        user: bastien
+        state: present
+        key: https://github.com/BastienBalaud.keys
+
