@@ -1,5 +1,5 @@
 ## Prérequis
-Installer toutes les dépendanes de virtualisation.
+Installer toutes les dépendanes de virtualisation et Ansible.
 ```bash
 dnf install '@Virtualization Host' ansible
 ```
