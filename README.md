@@ -12,7 +12,7 @@ hostname -I
 
 ```BASH
 # Cloner le repo
-git clone ghttps://github.com/Kev1venteur/TP-Packer.git && cd TP-Packer
+git clone https://github.com/Kev1venteur/TP-Packer.git && cd TP-Packer
 
 # Lancer le build packer 
 packer build rocky-8.pkr.hcl
