@@ -1,7 +1,7 @@
 ## Prérequis
 Installer toutes les dépendanes de virtualisation.
 ```bash
-dnf install '@Virtualization Host'
+dnf install '@Virtualization Host' ansible
 ```
 Vérifier que l'IP [ICI](rocky-8.pkr.hcl#L22) correspond à l'adresse donnée par la commande :
 ```bash
@@ -12,7 +12,7 @@ hostname -I
 
 ```BASH
 # Cloner le repo
-git clone git@github.com:Kev1venteur/TP-Packer.git && cd TP-Packer
+git clone ghttps://github.com/Kev1venteur/TP-Packer.git && cd TP-Packer
 
 # Lancer le build packer 
 packer build rocky-8.pkr.hcl
