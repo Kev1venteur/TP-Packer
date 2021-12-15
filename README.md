@@ -3,7 +3,7 @@ Installer toutes les dépendanes de virtualisation.
 ```bash
 dnf install '@Virtualization Host'
 ```
-Vérifier que l'IP [ici](rocky-8.pkr.hcl#L22) correspond à l'adresse donnée par la commande :
+Vérifier que l'IP [ICI](rocky-8.pkr.hcl#L22) correspond à l'adresse donnée par la commande :
 ```bash
 hostname -I
 ```
